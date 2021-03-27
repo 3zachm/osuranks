@@ -1,0 +1,195 @@
+@font-face {
+    font-family: Torus;
+    font-weight: 100;
+    src: url("../fonts/Torus-Thin.otf")
+}
+
+@font-face {
+    font-family: Torus;
+    font-weight: 600;
+    src: url("../fonts/Torus-SemiBold.otf")
+}
+
+@font-face {
+    font-family: Torus;
+    font-weight: 700;
+    src: url("../fonts/Torus-SemiBold.otf")
+}
+
+@font-face {
+    font-family: Torus;
+    font-weight: 400;
+    src: url("../fonts/Torus-Regular.otf")
+}
+
+@font-face {
+    font-family: Torus;
+    font-weight: 300;
+    src: url("../fonts/Torus-Light.otf")
+}
+
+@font-face {
+    font-family: Torus;
+    font-weight: 900;
+    src: url("../fonts/Torus-Heavy.otf")
+}
+
+@font-face {
+    font-family: Torus;
+    font-weight: 800;
+    src: url("../fonts/Torus-Bold.otf")
+}
+
+.footer {
+    text-align: center;
+    display: block;
+    margin: 15px;
+}
+
+.body {
+    background-color:#25222A;
+    color:#FFFFFF;
+    font-family: Torus,Inter,Helvetica Neue,Tahoma,Arial,Hiragino Kaku Gothic ProN,Meiryo,Microsoft YaHei,Apple SD Gothic Neo,sans-serif;
+    background-image: url("https://osu.ppy.sh/images/backgrounds/page-000.png");
+    background-size: 500px 500px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding:20px;
+    justify-content: center;
+    background-color:#19171C;
+    border-radius: 0px 0px 20px 20px;
+}
+
+.card {
+    background-color:#25222A;
+    width: 310px;
+    height: 375px;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 5px;
+    border-radius: 20px;
+    margin: 5px;
+}
+
+.thing {
+    margin: 0px;
+}
+
+.header {
+    flex: none;
+    background-image: url("https://osu.ppy.sh/images/backgrounds/page-000.png");
+    background-size: 500px 500px;
+    text-align: center;
+    font-size:24px;
+    margin:5px;
+}
+
+.overlay {
+    background-color:#19171C;
+    height:100px;
+    border-radius: 0px 0px 20px 20px;
+    margin: 10px;
+    margin-top:0px;
+}
+
+.search {
+    text-align: center;
+    display: block;
+    background-color:#19171C;
+    padding-top: 20px;
+    border-radius: 20px 20px 0px 0px;
+    margin: 10px;
+    margin-bottom: 0px;
+}
+
+.ctrimg {
+    display: block;
+    margin: 0 auto;
+    padding-top: 15px;
+}
+
+.infoline {
+    display: flex;
+    justify-content: space-between;
+}
+
+.rank {
+    padding-left: 0px;
+    text-align: center;
+    font-size: 30px;
+    margin-top: 15px;
+    margin-bottom:2px;
+}
+
+.crank {
+    padding-left: 0px;
+    text-align: center;
+    font-size: 15px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+}
+
+.info {
+    padding-left: 10px;
+    text-align: right;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-right: 10px;
+    padding-left: 0px;
+}
+
+.infotext {
+    padding-right: 10px;
+    text-align: left;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 10px;
+}
+
+.pfp {
+    display: block;
+    margin: 0 auto;
+    padding-top: 15px;
+    width: 96px;
+    height: 96px;
+}
+
+.username {
+    padding-left: 0px;
+    text-align: center;
+    font-size: 30px;
+    margin-top: 5px;
+    margin-bottom:8px;
+}
+
+.title {
+    margin: 10px;
+}
+
+.subtitle {
+    margin: 10px;
+    margin-bottom: 18px;
+}
+
+.subtitle__error {
+    margin: 10px;
+    margin-bottom: 18px;
+    color: yellow;
+}
+
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+.flag {
+    width: 17px;
+}
+
+input:focus::placeholder {
+    color: transparent;
+  }
