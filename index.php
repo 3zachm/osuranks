@@ -1,5 +1,7 @@
 <?php
     $notfound = false;
+    $ratelimited = false;
+    $unknownerror = false;
     require_once("includes/osu.lib.php");
     $osuSTD = $osuTAIKO = $osuCTB = $osuMANIA = json_decode('
     {
@@ -27,18 +29,33 @@
         if ($_GET["error"] == "notfound") {
             $notfound = true;
         }
+        else if ($_GET["error"] == "ratelimited") {
+            $ratelimited = true;
+        }
+        else if ($_GET["error"] == "unknown") {
+            $unknownerror = true;
+        }
     }
     else {
         if (isset($_GET["user"])) {
-            if (isset(getUser($_GET["user"], 0)[0]->user_id)) {
-                $osuSTD = getUser($_GET["user"], 0)[0];
+            $osuCHECK = getUser($_GET["user"], 0);
+            $osuSTD = $osuCHECK[0];
+            if (isset($osuSTD->user_id)) {
                 $osuTAIKO = getUser($_GET["user"], 1)[0];
                 $osuCTB = getUser($_GET["user"], 2)[0];
                 $osuMANIA = getUser($_GET["user"], 3)[0];
                 $pfp = 'http://s.ppy.sh/a/' . $osuSTD->user_id;
             }
-            else {
+            else if ($osuCHECK === "ratelimited") {
+                header("location: /osuranks?error=ratelimited");
+                exit();
+            }
+            else if ($osuCHECK === "notfound") {
                 header("location: /osuranks?error=notfound");
+                exit();
+            }
+            else {
+                header("location: /osuranks?error=unknown");
                 exit();
             }
         }
@@ -52,9 +69,11 @@
 </head>
 <body class="body">
     <div class="header">
-        <h1 class="title">Best osu! rank checker</h1>
+        <h1 class="title">osu!ranks</h1>
         <?php
             if ($notfound) { echo("<p class='subtitle__error'>Username not found!"); }
+            else if ($ratelimited) { echo("<p class='subtitle__error'>You're being rate limited! (~7 requests/30 seconds)"); }
+            else if ($unknownerror) { echo("<p class='subtitle__error'>An unknown error occurred!"); }
             else { echo("<p class='subtitle'>It sort of works"); }
         ?>
         </p>
@@ -435,6 +454,7 @@
             </div>
         </div>
         <div class="footer">
+            <p>3zachm - <a href="../" target="_self">Home</a></p>
         </div>
     </div>
 </body>

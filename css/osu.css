@@ -41,9 +41,18 @@
 }
 
 .footer {
-    text-align: center;
-    display: block;
-    margin: 15px;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	color: white;
+	text-align: center;
+}
+
+.footer p {
+	font-family: manrope;
+	font-size: 14px;
+	text-shadow: 2px 2px 6px #000000;
 }
 
 .body {

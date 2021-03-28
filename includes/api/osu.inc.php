@@ -1,16 +1,19 @@
 <?php
 
 require_once(__DIR__ . '/../../../../secure/.env');
-$osu_path = 'http://osu.ppy.sh/api/';
+require_once('redis.inc.php');
+require_once('rate.inc.php');
 
-// 401 Check
-if (false === ($json = @file_get_contents('http://osu.ppy.sh/api/get_user?k='.$_OSUAPI))) {
-    $data = json_decode('{"error":"Please provide a valid API key."}');
-    echo $data->error;
-    exit();
-}
-else {
-    $data = json_decode($json);
+$osu_path = 'http://osu.ppy.sh/api/';
+$limiter401 = new GlobalRateLimiter($redis, '401', 1, 10);
+
+if ($limiter401->hit() === true) {
+    // 401 Check
+    if (false === ($json = @file_get_contents('http://osu.ppy.sh/api/get_user?k='.$_OSUAPI))) {
+        $data = json_decode('{"error":"Please provide a valid API key."}');
+        echo $data->error;
+        exit();
+    }
 }
 
 function getAPI() {
