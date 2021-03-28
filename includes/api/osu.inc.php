@@ -5,7 +5,7 @@ require_once('redis.inc.php');
 require_once('rate.inc.php');
 
 $osu_path = 'http://osu.ppy.sh/api/';
-$limiter401 = new GlobalRateLimiter($redis, '401', 1, 10);
+$limiter401 = new GlobalRateLimiter($redis, '401', 1, 120);
 
 if ($limiter401->hit() === true) {
     // 401 Check
