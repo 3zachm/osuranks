@@ -9,12 +9,21 @@ function getUser($profile, $mode) {
     $osu_path = getPATH();
     $_OSUAPI = getAPI();
     $apiLimiter = new RateLimiter($redis, 30, 30);
+    $redis_key = $profile . '_' . $mode;
+    $period = 900;
 
-    if ($apiLimiter->hit() === true) {
+    # check cache
+    if ($redis->exists($redis_key)) {
+        $json = $redis->get($redis_key);
+        return json_decode($json);
+    }
+    else if ($apiLimiter->hit() === true) {
         $request = $osu_path . 'get_user?k=' . $_OSUAPI . '&u=' . $profile . '&m=' . $mode;
         $json = @file_get_contents($request);
         $result = json_decode($json);
         if (isset($result[0]->user_id)) {
+            $redis->set($redis_key, $json);
+            $redis->expire($redis_key, $period);
             return $result;
         }
         else {
@@ -26,4 +35,9 @@ function getUser($profile, $mode) {
         exit();
         return "ratelimited";
     }
+}
+
+function getUserPFP($profile) {
+    $pfp = 'http://s.ppy.sh/a/' . $profile;
+    return $pfp;
 }

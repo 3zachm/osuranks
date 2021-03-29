@@ -23,7 +23,7 @@
         "pp_country_rank": "0"
     }
     '); // make default json values
-    $pfp = 'https://osu.ppy.sh/images/layout/avatar-guest@2x.png';
+    $pfp = 'img/avatar-guest@2x.png';
 
     if (isset($_GET["error"])) {
         if ($_GET["error"] == "notfound") {
@@ -44,7 +44,7 @@
                 $osuTAIKO = getUser($_GET["user"], 1)[0];
                 $osuCTB = getUser($_GET["user"], 2)[0];
                 $osuMANIA = getUser($_GET["user"], 3)[0];
-                $pfp = 'http://s.ppy.sh/a/' . $osuSTD->user_id;
+                $pfp = getUserPFP($osuSTD->user_id);
             }
             else if ($osuCHECK === "ratelimited") {
                 header("location: /osuranks?error=ratelimited");
