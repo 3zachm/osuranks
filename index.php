@@ -90,7 +90,7 @@
                 <div class="thing" id="user">
                     <img src=<?php echo($pfp) ?> class="pfp" id="userpfp">
                     <p class="username" id="u1">
-                        <?php echo($osuSTD->username) ?>
+                    <?php echo('<a href="https://osu.ppy.sh/u/' . $osuSTD->user_id . '" target="_self">'  . $osuSTD->username . '</a>') ?>
                     </p>
                     <div class="infoline">
                         <p class="infotext">Joined:</p>
