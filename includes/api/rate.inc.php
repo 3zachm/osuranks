@@ -25,7 +25,7 @@ class RateLimiter {
         return $this->total_requests;
     }
 
-    function hit() {
+    function hit($hook) {
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
             $user_ip_address = $_SERVER['HTTP_CLIENT_IP'];
         }
@@ -45,6 +45,10 @@ class RateLimiter {
             $this->total_requests = $this->redis->get($user_ip_address);
         }
         if ($this->total_requests > $this->max_requests) {
+            if ($hook) {
+                require_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . "osuranks/includes/hook.functions.php");
+                sendRateHook($user_ip_address, $this->total_requests);
+            }
             return false;
         }
         else {

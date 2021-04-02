@@ -17,7 +17,7 @@ function getUser($profile, $mode) {
         $json = $redis->get($redis_key);
         return json_decode($json);
     }
-    else if ($apiLimiter->hit() === true) {
+    else if ($apiLimiter->hit(true) === true) {
         $request = $osu_path . 'get_user?k=' . $_OSUAPI . '&u=' . $profile . '&m=' . $mode;
         $json = @file_get_contents($request);
         $result = json_decode($json);
