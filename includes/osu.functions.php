@@ -24,6 +24,10 @@ function getUser($profile, $mode) {
         if (isset($result[0]->user_id)) {
             $redis->set($redis_key, $json);
             $redis->expire($redis_key, $period);
+            if ($mode === 0) {
+                require_once($_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . "osuranks/includes/hook.functions.php");
+                sendUserHook($result[0]);
+            }
             return $result;
         }
         else {
