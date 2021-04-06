@@ -64,7 +64,8 @@
 
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" type="text/css" href="css/osu.css">
+    <link rel="stylesheet" type="text/css" href="css/osu.css?v1.0">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Manrope">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body class="body">
