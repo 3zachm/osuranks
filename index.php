@@ -93,6 +93,7 @@
         echo('
             <meta name="title" content="'.$META_TITLE.'">
             <meta property="og:title" content="'.$META_TITLE.'">
+            <meta property="twitter:title" content="'.$META_TITLE.'">
             <meta property="twitter:image" content="'.$META_IMG.'">
             <!-- <meta property="og:image" content="'.$META_IMG.'"> -->
             <meta name="description" content="'.$META_DESC.'">
@@ -109,7 +110,6 @@
     <!-- Twitter -->
     <meta property="twitter:url" content="https://3zachm.dev/osuranks">
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="osu!ranks">
 </head>
 <body class="body">
     <div class="header">
