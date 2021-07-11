@@ -82,12 +82,12 @@
     <?php
         if ($osuSTD->user_id === "0") {
             $META_TITLE = "osu!ranks";
-            #$META_IMG = "https://3zachm.dev/img/ranks.png";
+            $META_IMG = "https://3zachm.dev/osuranks/img/avatar-guest@2x.png";
             $META_DESC = "View all and combined stats for an osu!profile.";
         }
         else {
             $META_TITLE = "$osuSTD->username | osu!ranks";
-            #$META_IMG = "https://3zachm.dev/img/ranks.png";
+            $META_IMG = "https://s.ppy.sh/a/" . $osuSTD->user_id;
             $META_DESC = "osu!ranks » $osuSTD->username";
         }
         echo('
@@ -95,7 +95,7 @@
             <meta property="og:title" content="'.$META_TITLE.'">
             <meta property="twitter:title" content="'.$META_TITLE.'">
             <meta property="twitter:image" content="'.$META_IMG.'">
-            <!-- <meta property="og:image" content="'.$META_IMG.'"> -->
+            <meta property="og:image" content="'.$META_IMG.'">
             <meta name="description" content="'.$META_DESC.'">
             <meta property="og:description" content="'.$META_DESC.'">
             <meta property="twitter:description" content="'.$META_DESC.'">
@@ -109,7 +109,7 @@
 
     <!-- Twitter -->
     <meta property="twitter:url" content="https://3zachm.dev/osuranks">
-    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:card" content="summary">
 </head>
 <body class="body">
     <div class="header">
