@@ -63,6 +63,7 @@
 ?>
 
 <!DOCTYPE html>
+<?php include($_SERVER['DOCUMENT_ROOT'] . '/includes/patchy.php'); ?>
 <head>
     <link rel="stylesheet" type="text/css" href="css/osu.css?v1.0">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Manrope">
@@ -110,6 +111,10 @@
     <!-- Twitter -->
     <meta property="twitter:url" content="https://3zachm.dev/osuranks">
     <meta property="twitter:card" content="summary">
+    <?php
+        define('MATOMO_INCLUDED', true);
+        include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/matomo.php');
+    ?>
 </head>
 <body class="body">
     <div class="header">
